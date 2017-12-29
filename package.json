@@ -1,0 +1,24 @@
+{
+  "name": "dueros-guess-number",
+  "version": "1.0.0",
+  "description": "guess-number on DuerOS",
+  "main": "index.js",
+  "dependencies": {
+    "bot-sdk": "^1.0.9",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qiuyanpeng/dueros-guess-number.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qiuyanpeng/dueros-guess-number/issues"
+  },
+  "homepage": "https://github.com/qiuyanpeng/dueros-guess-number#readme"
+}
