@@ -1,5 +1,8 @@
 
-var BaseBot = require('./../../index');
+var BaseBot = require('./lib/Bot');
+
+let randomNumber = Math.floor((Math.random() * 100)) + 1; 
+console.log('randomNumber:' + randomNumber);
 
 class Bot extends BaseBot{
     constructor (postData) {
@@ -24,8 +27,8 @@ class Bot extends BaseBot{
             };
         });
 
-        this.addIntentHandler('initiate-guess-number', () => {
-            let msg = '欢迎来到猜数字。请猜一个1-100以内的数字。';
+        this.addIntentHandler('start_guess_number', () => {
+            let msg = '请猜一个1-100以内的数字。';
             let card = new Bot.Card.TextCard(msg);
             return {
                 card: card,
@@ -33,16 +36,28 @@ class Bot extends BaseBot{
             };
         });
 
-        this.addIntentHandler('guess-number', () => {
+        this.addIntentHandler('guess_number', () => {
             let num = this.getSlot('number');
-            //if (this.request.isDialogStateCompleted()) {
-                let card = new Bot.Card.TextCard(num);
-                //this.nlu.ask('再猜一猜');
-                return {
-                    card: card,
-                    outputSpeech: '请你再猜一猜'
-                };
-            //}
+            let msg = '';
+            if (num < 0 || num > 100) {
+              msg = '请猜一个0-100以内的数字。';
+              this.nul.ask('number');
+            }
+            else if (num > randomNumber) {
+              msg = '太大了';
+              this.nlu.ask('number');
+            } else if (num < randomNumber) {
+              msg = '太小了';
+              this.nlu.ask('number');
+            } else {
+              msg = '猜对了！';
+              this.endSession();
+            }
+            let card = new Bot.Card.TextCard(msg);
+            return {
+                card: card,
+                outputSpeech: msg
+            };
         });
 
    }

@@ -1,1 +1,1 @@
-# dueros-guess-number
+# guess-number using DuerOs SDK nodejs
