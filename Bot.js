@@ -1,5 +1,5 @@
 
-var BaseBot = require('./lib/Bot');
+var BaseBot = require('bot-sdk');
 
 let randomNumber = Math.floor((Math.random() * 100)) + 1; 
 console.log('randomNumber:' + randomNumber);
